@@ -1,0 +1,388 @@
+.review-page {
+  padding: 1rem;
+  max-width: 1800px;
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 1rem; /* Default padding when chatbot is closed */
+  transition: padding-right 0.3s ease;
+}
+
+/* When chatbot is open, add padding to make room */
+body.chatbot-open .review-page {
+  padding-right: 440px; /* Make room for chatbot (400px width + 20px margin + 20px padding) */
+}
+
+@media (max-width: 1400px) {
+  body.chatbot-open .review-page {
+    padding-right: 1rem; /* Remove extra padding on smaller screens */
+  }
+}
+
+@media (max-width: 1400px) {
+  .review-page {
+    padding-right: 1.5rem; /* Remove extra padding on smaller screens */
+  }
+}
+
+.review-page h2 {
+  color: #111827;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.review-layout {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.submissions-list,
+.review-panel {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.submissions-list h3 {
+  margin-top: 0;
+  color: #111827;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.loading,
+.no-submissions,
+.no-selection {
+  text-align: center;
+  padding: 3rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.submissions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.submission-card {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.submission-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: #0072CE;
+}
+
+.submission-card.selected {
+  background: #e0f2fe;
+  border-color: #0072CE;
+  box-shadow: 0 4px 12px rgba(0,114,206,0.2);
+}
+
+.submission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.submission-id {
+  font-weight: 600;
+  color: #0072CE;
+  font-size: 1.1rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.submitted {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.under_review {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.submission-info,
+.submission-date {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.submission-summary {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+.review-content h3 {
+  margin-top: 0;
+  color: #111827;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.submission-info {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.submission-info p {
+  margin: 0.5rem 0;
+}
+
+.changes-summary-section {
+  background: #f0f9ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.changes-summary-section h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.changes-summary-content {
+  color: #1e3a8a;
+  line-height: 1.6;
+}
+
+.changes-summary-content p {
+  margin: 0;
+}
+
+.gaps-summary-section {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.gaps-summary-section h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #92400e;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.gaps-summary-content {
+  color: #92400e;
+}
+
+.gaps-total {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.gaps-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gap-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+}
+
+.gap-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.gap-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.document-viewer-section {
+  margin-bottom: 1.5rem;
+}
+
+.document-viewer-section h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.changes-summary {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.data-review {
+  margin-bottom: 2rem;
+}
+
+.data-review h4 {
+  color: #111827;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.data-table-section {
+  margin-bottom: 1.5rem;
+}
+
+.data-table-section h5 {
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.data-table th {
+  background: linear-gradient(135deg, #0072CE 0%, #005bb5 100%);
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.data-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.data-table tr:hover {
+  background: #f9fafb;
+}
+
+.review-form {
+  background: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.review-form h4 {
+  margin-top: 0;
+  color: #111827;
+  font-weight: 700;
+}
+
+.review-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  resize: vertical;
+}
+
+.review-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.approve-button,
+.reject-button {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.approve-button {
+  background: linear-gradient(135deg, #0072CE 0%, #005bb5 100%);
+  color: white;
+}
+
+.approve-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,114,206,0.3);
+}
+
+.reject-button {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+}
+
+.reject-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220,53,69,0.3);
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+@media (max-width: 1200px) {
+  .review-layout {
+    grid-template-columns: 1fr;
+  }
+}
+

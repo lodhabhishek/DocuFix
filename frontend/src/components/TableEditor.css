@@ -1,0 +1,166 @@
+.table-editor-container {
+  margin: 1.5rem 0;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table-controls h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.table-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.table-button {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #0072CE 0%, #005bb5 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.table-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,114,206,0.3);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+}
+
+.editable-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  min-width: 100%;
+}
+
+.editable-table td {
+  border: 1px solid #dee2e6;
+  padding: 0.75rem;
+  min-width: 120px;
+  position: relative;
+}
+
+.editable-table td:first-child {
+  border-left: 2px solid #0072CE;
+}
+
+.editable-table tr:first-child td,
+.editable-table tr.header-row td {
+  border-top: 2px solid #0072CE;
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+/* Yellow highlighting for gaps (Pending/missing values) */
+.editable-table td.cell-gap {
+  background-color: #fff9c4 !important;
+  border: 2px solid #ffc107 !important;
+}
+
+.editable-table tr.header-row td.cell-gap {
+  background-color: #fff9c4 !important;
+  border: 2px solid #ffc107 !important;
+}
+
+.cell-gap-content,
+.cell-gap-input {
+  background-color: transparent !important;
+  font-weight: 500;
+}
+
+.cell-input.cell-gap-input:focus {
+  background-color: #fff9c4 !important;
+  border: 2px solid #ffc107 !important;
+}
+
+/* Green highlighting for filled cells (previously had gaps, now have valid data) */
+.editable-table td.cell-filled {
+  background-color: #c8e6c9 !important;
+  border: 2px solid #4caf50 !important;
+}
+
+.editable-table tr.header-row td.cell-filled {
+  background-color: #c8e6c9 !important;
+  border: 2px solid #4caf50 !important;
+}
+
+.cell-filled-content,
+.cell-filled-input {
+  background-color: transparent !important;
+  font-weight: 600;
+  color: #1b5e20;
+}
+
+.cell-input.cell-filled-input:focus {
+  background-color: #a5d6a7 !important;
+  border: 2px solid #4caf50 !important;
+}
+
+.cell-input {
+  width: 100%;
+  border: none;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  background: transparent;
+  outline: none;
+  min-height: 2rem;
+}
+
+.cell-input:focus {
+  background: #e0f2fe;
+  border-radius: 4px;
+}
+
+.cell-content {
+  padding: 0.5rem;
+  min-height: 2rem;
+  color: #495057;
+}
+
+.empty-table {
+  padding: 2rem;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .table-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .table-buttons {
+    width: 100%;
+  }
+  
+  .table-button {
+    flex: 1;
+  }
+}
+
